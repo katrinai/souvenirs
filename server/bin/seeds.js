@@ -11,19 +11,7 @@ const City = require("../models/City");
 
 const bcryptSalt = 10;
 
-mongoose
-  .connect(
-    "mongodb://localhost/server",
-    { useNewUrlParser: true }
-  )
-  .then(x => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
-  })
-  .catch(err => {
-    console.error("Error connecting to mongo", err);
-  });
+require("../configs/database");
 
 let users = [
   {
@@ -38,11 +26,21 @@ let users = [
 
 User.deleteMany()
   .then(() => {
+    return City.deleteMany();
+  })
+  .then(() => {
     return User.create(users);
   })
   .then(usersCreated => {
-    console.log(`${usersCreated.length} users created with the following id:`);
-    console.log(usersCreated.map(u => u._id));
+    console.log(`${usersCreated.length} users created:`);
+    console.log(usersCreated.map(u => u.username));
+  })
+  .then(() => {
+    return City.create(cities);
+  })
+  .then(citiessCreated => {
+    console.log(`${citiessCreated.length} cities created:`);
+    console.log(citiessCreated.map(c => c.name));
   })
   .then(() => {
     // Close properly the connection to Mongoose
