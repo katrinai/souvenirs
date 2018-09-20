@@ -1,8 +1,14 @@
-const express = require('express');
-const { isLoggedIn } = require('../middlewares')
+const express = require("express");
+const { isLoggedIn } = require("../middlewares");
 const router = express.Router();
 
-router.get('/secret', isLoggedIn, (req, res, next) => {
+router.get("/", (req, res, next) => {
+  res.json({
+    message: "this is the landing page"
+  });
+});
+
+router.get("/secret", isLoggedIn, (req, res, next) => {
   res.json({
     secret: 42,
     user: req.user
