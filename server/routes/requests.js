@@ -18,11 +18,11 @@ router.post("/", (req, res, next) => {
     title: req.body.title,
     text: req.body.text,
     endDate: req.body.endDate,
-    _owner: req.user._id,
-    // _city: req.city._id
+    _owner: req.user._id
+    //_city: req.city._id
   })
     .then(newRequest => {
-      res.redirect("/userprofile/" + newRequest._id);
+      res.json(newRequest);
     })
     .catch(err => next(err));
 });
