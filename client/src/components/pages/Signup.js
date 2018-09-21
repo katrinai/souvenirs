@@ -1,37 +1,42 @@
-import React, { Component } from 'react';
-import api from '../../api';
+import React, { Component } from "react";
+import api from "../../api";
 
 class Signup extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
+      firstname: "",
+      lastname: "",
+      email: "",
       username: "",
-      name: "",
-      password: "",
-    }
+      password: ""
+    };
   }
 
   handleInputChange(stateFieldName, event) {
     this.setState({
       [stateFieldName]: event.target.value
-    })
+    });
   }
 
   handleClick(e) {
-    e.preventDefault()
+    e.preventDefault();
     let data = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      email: this.state.email,
       username: this.state.username,
-      name: this.state.name,
-      password: this.state.password,
-    }
-    api.signup(data)
+      password: this.state.password
+    };
+    api
+      .signup(data)
       .then(result => {
-        console.log('SUCCESS!')
-        this.props.history.push("/login") // Redirect to the login page
+        console.log("SUCCESS!");
+        this.props.history.push("/login"); // Redirect to the login page
       })
       .catch(err => {
-        console.log('ERROR')
-      })
+        console.log("ERROR");
+      });
   }
 
   render() {
@@ -39,11 +44,46 @@ class Signup extends Component {
       <div className="Signup">
         <h2>Signup</h2>
         <form>
-          Username: <input type="text" value={this.state.username} onChange={(e) => this.handleInputChange("username", e)} /> <br />
-          Name: <input type="text" value={this.state.name} onChange={(e) => this.handleInputChange("name", e)} /> <br />
-          Password: <input type="password" value={this.state.password} onChange={(e) => this.handleInputChange("password", e)} /> <br />
-          <button onClick={(e) => this.handleClick(e)}>Signup</button>
+          First name:{" "}
+          <input
+            type="text"
+            value={this.state.firstname}
+            onChange={e => this.handleInputChange("firstname", e)}
+          />{" "}
+          <br />
+          Last name:{" "}
+          <input
+            type="text"
+            value={this.state.lastname}
+            onChange={e => this.handleInputChange("lastname", e)}
+          />{" "}
+          <br />
+          Email:{" "}
+          <input
+            type="text"
+            value={this.state.email}
+            onChange={e => this.handleInputChange("email", e)}
+          />{" "}
+          <br />
+          Username:{" "}
+          <input
+            type="text"
+            value={this.state.username}
+            onChange={e => this.handleInputChange("username", e)}
+          />{" "}
+          <br />
+          Password:{" "}
+          <input
+            type="password"
+            value={this.state.password}
+            onChange={e => this.handleInputChange("password", e)}
+          />{" "}
+          <br />
+          <button onClick={e => this.handleClick(e)}>Signup</button>
         </form>
+        <p class="account-message">
+          Already signed up? <a href="/login">Login</a>
+        </p>
       </div>
     );
   }

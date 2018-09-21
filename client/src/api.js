@@ -1,7 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api',
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? "/api"
+      : "http://localhost:5000/api",
   withCredentials: true
 });
 
@@ -13,81 +16,81 @@ const errHandler = err => {
 export default {
   service: service,
 
-  getCountries() {
+  getRequests(data) {
     return service
-      .get('/countries')
+      .get("/requests")
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  postCountries(data) {
+  postRequests(data) {
     return service
-      .post('/countries', data)
+      .post("/requests", data)
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  getSecret() {
+  getCities(data) {
     return service
-      .get('/secret')
+      .get("/cities")
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  postCities(data) {
+    return service
+      .post("/cities", data)
       .then(res => res.data)
       .catch(errHandler);
   },
 
   signup(userInfo) {
     return service
-      .post('/signup', userInfo)
+      .post("/signup", userInfo)
       .then(res => res.data)
       .catch(errHandler);
   },
 
   login(username, password) {
     return service
-      .post('/login', {
+      .post("/login", {
         username,
-        password,
+        password
       })
       .then(res => {
-        localStorage.setItem('user', JSON.stringify(res.data));
+        localStorage.setItem("user", JSON.stringify(res.data));
         return res.data;
       })
       .catch(errHandler);
   },
 
   logout() {
-    return service
-      .get('/logout')
-      .then(res => {
-        localStorage.removeItem('user');
-      })
+    return service.get("/logout").then(res => {
+      localStorage.removeItem("user");
+    });
   },
-
-  // loadUser() {
-  //   const userData = localStorage.getItem('user');
-  //   if (!userData) return false;
-  //   const user = JSON.parse(userData);
-  //   if (user.token) {
-  //     axios.defaults.headers.common['Authorization'] = 'Bearer ' + user.token;
-  //     return user;
-  //   }
-  //   return false;
-  // },
 
   isLoggedIn() {
-    return localStorage.getItem('user') != null
+    return localStorage.getItem("user") != null;
   },
 
-
-  addPicture(file) {
-    const formData = new FormData();
-    formData.append("picture", file)
+  getUserprofile(data) {
     return service
-      .post('/users/first-user/pictures', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      .get("/userprofile")
       .then(res => res.data)
       .catch(errHandler);
-  },
+  }
+
+  // addPicture(file) {
+  //   const formData = new FormData();
+  //   formData.append("picture", file);
+  //   return service
+  //     .post("/users/first-user/pictures", formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data"
+  //       }
+  //     })
+  //     .then(res => res.data)
+  //     .catch(errHandler);
+  // }
 };

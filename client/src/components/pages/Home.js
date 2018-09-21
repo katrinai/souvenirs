@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Home extends Component {
   // constructor(props) {
@@ -6,11 +6,26 @@ class Home extends Component {
   //   this.state = {
   //   }
   // }
-  render() {                
+  render() {
     return (
       <div className="Home">
         <h2>Home</h2>
-        <p>This is a sample project with the MERN stack</p>
+        <p>This is the home page of Souvenirs</p>
+        <br />
+        <p>Information will be displayed here.</p>
+        <a
+          href="/search"
+          class="btn btn-primary btn-lg active"
+          role="button"
+          aria-pressed="true"
+        >
+          I am <br />
+          travelling
+        </a>{" "}
+        <button type="button" class="btn btn-primary btn-lg">
+          I have a<br />
+          request
+        </button>
       </div>
     );
   }
