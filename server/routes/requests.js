@@ -1,9 +1,10 @@
 const express = require("express");
 const Request = require("../models/Request");
 const router = express.Router();
+const { isLoggedIn } = require("../middlewares");
 
 // Route to get all requests
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   Request.find()
     .then(request => {
       res.json(request);
@@ -12,8 +13,7 @@ router.get("/", (req, res, next) => {
 });
 
 // Route to add a request
-router.post("/", (req, res, next) => {
-  // let { title, text, endDate, _owner, _city } = req.body;
+router.post("/", isLoggedIn, (req, res, next) => {
   Request.create({
     title: req.body.title,
     text: req.body.text,
@@ -28,46 +28,52 @@ router.post("/", (req, res, next) => {
 });
 
 // Route to edit a request
-router.put("/:requestId", (req, res, next) => {
-  // let { title, text, endDate, _owner, _city } = req.body;
-  Request.findByIdAndUpdate(
-    req.params.requestId,
-    {
-      title: req.body.title,
-      text: req.body.text,
-      endDate: req.body.endDate,
-      _owner: req.user._id
+router.put("/:requestId", isLoggedIn, (req, res, next) => {
+  Request.findById(req.params.requestId).then(request => {
+    if (request._owner.toString() === req.user._id.toString()) {
+      request.title = req.body.title;
+      request.text = req.body.text;
+      request.endDate = req.body.endDate;
+      request._owner = req.user._id;
       //_city: req.city._id
-    },
-    { new: true }
-  )
-    .then(newRequest => {
-      res.json(newRequest);
-    })
-    .catch(err => next(err));
+      request
+        .save()
+        .then(updatedRequest => {
+          res.json({
+            success: true,
+            updatedRequest
+          });
+        })
+        .catch(err => next(err));
+    } else {
+      res.json({
+        status: 403,
+        message: "Unauthorized"
+      });
+    }
+  });
 });
 
 // Route to delete a request
-router.delete("/:requestId", (req, res, next) => {
-  // let { title, text, endDate, _owner, _city } = req.body;
-  Request.findByIdAndRemove(req.params.requestId, {
-    title: req.body.title,
-    text: req.body.text,
-    endDate: req.body.endDate,
-    _owner: req.user._id
-    //_city: req.city._id
-  })
-    .then(() => {
+router.delete("/:requestId", isLoggedIn, (req, res, next) => {
+  Request.findById(req.params.requestId).then(request => {
+    if (request._owner.toString() === req.user._id.toString()) {
+      request
+        .delete()
+        .then(deletedRequest => {
+          res.json({
+            success: true,
+            deletedRequest
+          });
+        })
+        .catch(err => next(err));
+    } else {
       res.json({
-        success: true
+        status: 403,
+        message: "Unauthorized"
       });
-    })
-    .catch(err => {
-      return {
-        success: false,
-        error: err
-      };
-    });
+    }
+  });
 });
 
 module.exports = router;

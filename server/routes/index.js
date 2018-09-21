@@ -8,10 +8,9 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("/secret", isLoggedIn, (req, res, next) => {
-  res.json({
-    secret: 42,
-    user: req.user
+router.get("/requests", isLoggedIn, (req, res, next) => {
+  Request.find({ _owner: req.user._id }).then(requests => {
+    res.json({ requests, user: req.user });
   });
 });
 

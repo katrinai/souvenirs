@@ -53,6 +53,8 @@ app.use("/api", require("./routes/index"));
 app.use("/api", require("./routes/auth"));
 app.use("/api/requests", require("./routes/requests"));
 app.use("/api/cities", require("./routes/cities"));
+app.use("/api/userprofile", require("./routes/userprofile"));
+app.use("/api/search", require("./routes/search"));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use("/api/*", (req, res, next) => {

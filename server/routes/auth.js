@@ -10,13 +10,15 @@ const bcryptSalt = 10;
 router.post("/signup", (req, res, next) => {
   const { username, password, firstname, lastname, email } = req.body;
   if (!username || !password) {
-    res.status(401).json({ message: "Indicate username and password" });
+    res.status(401).json({ message: "Please indicate username and password" });
     return;
   }
   User.findOne({ username })
     .then(user => {
       if (user !== null) {
-        res.status(401).json({ message: "The username already exists" });
+        res
+          .status(401)
+          .json({ message: "Sorry, but the username already exists" });
         return;
       }
       const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -41,7 +43,7 @@ router.post("/signup", (req, res, next) => {
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
-      res.status(500).json({ message: "Something went wrong" });
+      res.status(500).json({ message: "Something went wrong..." });
       return;
     }
 
@@ -52,7 +54,7 @@ router.post("/login", (req, res, next) => {
 
     req.login(theUser, err => {
       if (err) {
-        res.status(500).json({ message: "Something went wrong" });
+        res.status(500).json({ message: "Something went wrong..." });
         return;
       }
 
