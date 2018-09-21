@@ -12,7 +12,10 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  City.find()
+  City.create({
+    name: req.body.name,
+    country: req.body.country
+  })
     .then(city => {
       res.json(city);
     })
