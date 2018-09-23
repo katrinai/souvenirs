@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Userprofile from "./pages/Userprofile";
+import Search from "./pages/Search";
 import api from "../api";
 // import logo from "../logo.svg";
 import "./App.css";

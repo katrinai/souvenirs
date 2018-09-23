@@ -19,13 +19,16 @@ class Home extends Component {
           role="button"
           aria-pressed="true"
         >
-          I am <br />
-          travelling
+          I am travelling
         </a>{" "}
-        <button type="button" class="btn btn-primary btn-lg">
-          I have a<br />
-          request
-        </button>
+        <a
+          href="/add-request" // or is it /userprofile/addrequest ?
+          class="btn btn-primary btn-lg active"
+          role="button"
+          aria-pressed="true"
+        >
+          I have a request
+        </a>
       </div>
     );
   }

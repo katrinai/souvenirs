@@ -16,7 +16,7 @@ const errHandler = err => {
 export default {
   service: service,
 
-  getRequests(data) {
+  getRequests() {
     return service
       .get("/requests")
       .then(res => res.data)
@@ -26,6 +26,20 @@ export default {
   postRequests(data) {
     return service
       .post("/requests", data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  getSearch(data) {
+    return service
+      .get("/search?city=" + data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  postSearch(data) {
+    return service
+      .post("/search", data)
       .then(res => res.data)
       .catch(errHandler);
   },
@@ -79,6 +93,10 @@ export default {
       .get("/userprofile")
       .then(res => res.data)
       .catch(errHandler);
+  },
+
+  search(city) {
+    return service.get("/search", { city: city }).then(res => res.data);
   }
 
   // addPicture(file) {

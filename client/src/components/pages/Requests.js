@@ -25,6 +25,7 @@ class Requests extends Component {
         <h2>List of requests</h2>
         {this.state.requests.map((c, i) => (
           <li key={i}>
+            {c._owner}
             {c.title}
             {c.text}
           </li>
