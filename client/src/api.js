@@ -30,6 +30,13 @@ export default {
       .catch(errHandler);
   },
 
+  getRequestDetails(id) {
+    return service
+      .get("/requests/" + id)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
   getSearch(data) {
     return service
       .get("/search?city=" + data)
@@ -88,27 +95,14 @@ export default {
     return localStorage.getItem("user") != null;
   },
 
-  getUserprofile(data) {
-    return service
-      .get("/userprofile")
-      .then(res => res.data)
-      .catch(errHandler);
-  },
+  // getUserprofile(data) {
+  //   return service
+  //     .get("/userprofile/:id")
+  //     .then(res => res.data)
+  //     .catch(errHandler);
+  // },
 
   search(city) {
     return service.get("/search", { city: city }).then(res => res.data);
   }
-
-  // addPicture(file) {
-  //   const formData = new FormData();
-  //   formData.append("picture", file);
-  //   return service
-  //     .post("/users/first-user/pictures", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data"
-  //       }
-  //     })
-  //     .then(res => res.data)
-  //     .catch(errHandler);
-  // }
 };

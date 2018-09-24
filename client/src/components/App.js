@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Userprofile from "./pages/Userprofile";
+import RequestDetails from "./pages/RequestDetails";
 import Search from "./pages/Search";
 import api from "../api";
 // import logo from "../logo.svg";
@@ -47,6 +48,8 @@ class App extends Component {
           <Route path="/signup" component={Signup} />
           <Route path="/search" component={Search} />
           <Route path="/userprofile" component={Userprofile} />
+          <Route path="/request/:id" component={RequestDetails} />
+          {/* <Route path="/newRequest" component={NewRequest} /> */}
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>

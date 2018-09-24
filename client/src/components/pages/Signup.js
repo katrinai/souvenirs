@@ -32,7 +32,7 @@ class Signup extends Component {
       .signup(data)
       .then(result => {
         console.log("SUCCESS!");
-        this.props.history.push("/login"); // Redirect to the login page
+        this.props.history.push("/"); // later redirect to the "/userprofile" page
       })
       .catch(err => {
         console.log("ERROR");

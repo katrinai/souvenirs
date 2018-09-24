@@ -12,6 +12,26 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .catch(err => next(err));
 });
 
+// Route to get details from one request
+router.get("/:id", isLoggedIn, (req, res, next) => {
+  Request.findById(req.params.id)
+    .populate("_city")
+    .populate("_owner")
+    .then(requestDetails => {
+      console.log(
+        "details -->",
+        requestDetails._owner.username,
+        requestDetails._city.name
+      );
+      res.json({
+        details: requestDetails,
+        username: requestDetails._owner.username,
+        name: requestDetails._city.name
+      });
+    })
+    .catch(err => next(err));
+});
+
 // Route to add a request
 router.post("/", isLoggedIn, (req, res, next) => {
   Request.create({
