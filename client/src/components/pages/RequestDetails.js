@@ -21,8 +21,7 @@ class RequestDetail extends Component {
       this.setState({
         request: result.details,
         username: result.username,
-        name: result.name
-        //cityname
+        name: result.name //cityname
       });
     });
   }
@@ -41,6 +40,40 @@ class RequestDetail extends Component {
         End Date: {this.state.request.endDate}
         <br />
         Owner: {this.state.username}
+        <br />
+        <br />
+        <h3>Contact request owner</h3>
+        <form action="/send-email" method="post">
+          {/* <label for="">Email</label> */}
+          <input
+            type="email"
+            style={{ width: "200px" }}
+            placeholder="Emailadress of owner"
+            name="email"
+            id=""
+          />
+          <br />
+          {/* <label for="">Subject</label> */}
+          <input
+            type="text"
+            style={{ width: "200px" }}
+            placeholder="Subject"
+            name="subject"
+            id=""
+          />
+          <br />
+          {/* <label for="">Message</label> */}
+          <textarea
+            type="text"
+            style={{ width: "200px", height: "200px" }}
+            placeholder="Write your message here"
+            name="message"
+            id=""
+          />
+          <br />
+          <button type="submit">Send</button>
+          <br />
+        </form>
       </div>
     );
   }

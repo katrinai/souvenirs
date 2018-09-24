@@ -69,7 +69,7 @@ class Search extends Component {
         </form>
 
         {this.state.requests.length !== 0 ? (
-          <h1>Result</h1>
+          <h1>Results</h1>
         ) : (
           <h1>No results</h1>
         )}

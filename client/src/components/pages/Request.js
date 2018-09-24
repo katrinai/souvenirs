@@ -7,9 +7,8 @@ const Request = props => {
       {
         <ul>
           <li key={props.requestInfo._id}>
-            {props.requestInfo._owner}
-            {props.requestInfo.title}
-            {props.requestInfo.text}
+            {props.requestInfo.title} <br />
+            {props.requestInfo._owner.username} <br />
           </li>
         </ul>
       }

@@ -84,6 +84,8 @@ class Signup extends Component {
         <p class="account-message">
           Already signed up? <a href="/login">Login</a>
         </p>
+        <br />
+        <p>Some disclaimer here or in the Signup</p>
       </div>
     );
   }

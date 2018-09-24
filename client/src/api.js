@@ -104,5 +104,12 @@ export default {
 
   search(city) {
     return service.get("/search", { city: city }).then(res => res.data);
+  },
+
+  postSendEmail(data) {
+    return service
+      .post("/send-email", data)
+      .then(res => res.data)
+      .catch(errHandler);
   }
 };
