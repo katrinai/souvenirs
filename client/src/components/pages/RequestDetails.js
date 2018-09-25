@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Request from "./Request";
-// import { Router, Switch, NavLink, Link } from "react-router-dom";
 import api from "../../api";
-// import './Sample.css';
 
 class RequestDetail extends Component {
   constructor(props) {
@@ -10,8 +7,41 @@ class RequestDetail extends Component {
     this.state = {
       request: {},
       username: "",
-      name: "" //cityname
+      name: "", //citynname
+      //from: "",
+      to: "",
+      subject: "",
+      message: "",
+      taken: {}
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleRequestFullfill = this.handleRequestFullfill.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleRequestFullfill(event) {
+    alert("A message was sent to: " + this.state.to);
+    event.preventDefault();
+    let data = {
+      requestId: this.state.request._id,
+      to: this.state.to,
+      subject: this.state.subject,
+      message: this.state.message
+    };
+    api
+      .postSendEmail(data)
+      .then(result => {
+        console.log("Message sent?", result);
+        this.props.history.push("/search");
+      })
+      .catch(err => {
+        console.log("ERROR");
+      });
   }
 
   componentDidMount() {
@@ -21,7 +51,9 @@ class RequestDetail extends Component {
       this.setState({
         request: result.details,
         username: result.username,
-        name: result.name //cityname
+        name: result.name, //cityname,
+        //from: "", // this should be the logged in user email
+        to: result.details._owner.email
       });
     });
   }
@@ -30,7 +62,7 @@ class RequestDetail extends Component {
     console.log("REQUEST", this.state.username);
     return (
       <div className="RequestDetails">
-        <h1>Request details</h1>
+        <h3>Request details</h3>
         City: {this.state.name}
         <br />
         Title: {this.state.request.title}
@@ -43,14 +75,15 @@ class RequestDetail extends Component {
         <br />
         <br />
         <h3>Contact request owner</h3>
-        <form action="/send-email" method="post">
+        <form onSubmit={this.handleRequestFullfill}>
           {/* <label for="">Email</label> */}
           <input
             type="email"
             style={{ width: "200px" }}
-            placeholder="Emailadress of owner"
+            placeholder="Email address of owner"
             name="email"
             id=""
+            value={this.state.to}
           />
           <br />
           {/* <label for="">Subject</label> */}
@@ -60,15 +93,19 @@ class RequestDetail extends Component {
             placeholder="Subject"
             name="subject"
             id=""
+            onChange={this.handleChange}
           />
           <br />
           {/* <label for="">Message</label> */}
           <textarea
             type="text"
-            style={{ width: "200px", height: "200px" }}
-            placeholder="Write your message here"
+            style={{ width: "300px", height: "200px" }}
+            placeholder="Your message: Who are you?
+            When do you travel?
+            How much space is in your lugguage?"
             name="message"
             id=""
+            onChange={this.handleChange}
           />
           <br />
           <button type="submit">Send</button>

@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { isLoggedIn } = require("../middlewares");
 const nodemailer = require("nodemailer");
+const Request = require("../models/Request");
 
 router.post("/", isLoggedIn, (req, res, next) => {
-  let emailFrom = req.user.email;
+  let fromEmail = req.user.email;
+  let { to, subject, message } = req.body;
   let requestId = req.body.requestId;
-  let subject = req.body.subject;
-  let message = req.body.message;
 
   let transporter = nodemailer.createTransport({
     service: "Gmail",
@@ -21,13 +21,22 @@ router.post("/", isLoggedIn, (req, res, next) => {
   });
   transporter
     .sendMail({
-      from: req.user.email,
-      to: req.body.requestID,
-      subject: req.body.subject,
-      text: req.body.message,
-      html: `<b>${message}</b>` // two message texts?
+      from: `Souvenirs platform - <${fromEmail}>`,
+      to: to,
+      subject: subject,
+      text: message
     })
-    .then(info => res.json({ email, subject, message, info }))
+    .then(info => {
+      Request.findByIdAndUpdate(requestId, { taken: true }, { new: true }).then(
+        updated => {
+          res.json({
+            success: true,
+            message: `Email successfully sent to ${to}`,
+            updated
+          });
+        }
+      );
+    })
     .catch(error => console.log(error));
 });
 

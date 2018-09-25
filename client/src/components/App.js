@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Userprofile from "./pages/Userprofile";
 import RequestDetails from "./pages/RequestDetails";
+import NewRequest from "./pages/NewRequest";
 import Search from "./pages/Search";
 import SendEmail from "./pages/SendEmail";
 import api from "../api";
@@ -49,7 +50,7 @@ class App extends Component {
           <Route path="/userprofile" component={Userprofile} />
           <Route path="/request/:id" component={RequestDetails} />
           <Route path="/send-email" component={SendEmail} />
-
+          <Route path="/newrequest" component={NewRequest} />
           {/* <Route path="/newRequest" component={NewRequest} /> */}
           <Route render={() => <h2>404</h2>} />
         </Switch>

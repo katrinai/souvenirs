@@ -10,9 +10,11 @@ router.get("/", isLoggedIn, (req, res, next) => {
   let re = new RegExp(req.query.city, "i");
   City.findOne({ name: re })
     .then(city => {
-      Request.find({ _city: city._id }).then(requests => {
-        res.json(requests);
-      });
+      Request.find({ $and: [{ _city: city._id }, { taken: false }] }).then(
+        requests => {
+          res.json(requests);
+        }
+      );
     })
     .catch(err => next(err));
 });

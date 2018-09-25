@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import api from "../../api";
 
 const Request = props => {
   return (

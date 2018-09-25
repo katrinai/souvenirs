@@ -37,6 +37,13 @@ export default {
       .catch(errHandler);
   },
 
+  postNewRequest(data) {
+    return service
+      .post("/newrequest")
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
   getSearch(data) {
     return service
       .get("/search?city=" + data)
