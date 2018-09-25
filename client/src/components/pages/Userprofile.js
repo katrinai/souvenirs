@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import { Route, Link, Router } from "react-router-dom";
 import api from "../../api";
 import axios from "axios";
+import {
+  Button,
+  Form,
+  Col,
+  FormGroup,
+  Input,
+  Label,
+  FormText
+} from "reactstrap";
 
 class Userprofile extends Component {
   constructor(props) {
@@ -14,19 +23,19 @@ class Userprofile extends Component {
     };
   }
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/userprofile`).then(res => {
-      let users = res.data;
-      this.setState({ users });
+    api.getUserprofile().then(result => {
+      console.log("RESULT", result);
+
+      this.setState({
+        username: result.user.username,
+        firstname: result.user.firstname,
+        lastname: result.user.lastname,
+        email: result.user.email
+      });
     });
   }
 
   render() {
-    let id = this.props.match.params.id;
-
-    // let user = user.find(c => c._id === id); // this does not work; call api for user
-
-    let fields = ["username"];
-
     return (
       <div className="Userprofile">
         <h3>User profile</h3>
@@ -39,9 +48,17 @@ class Userprofile extends Component {
         Email: {this.state.email}
         <br />
         <br />
-        <h3>Create a request</h3>
+        <a
+          href="/newrequest"
+          className="btn btn-danger btn-ml active"
+          role="button"
+          aria-pressed="true"
+        >
+          Create a request
+        </a>
         <br />
         <h3>My request list:</h3>
+        {/* req.user._id */}
       </div>
     );
   }

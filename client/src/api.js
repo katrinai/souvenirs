@@ -102,12 +102,12 @@ export default {
     return localStorage.getItem("user") != null;
   },
 
-  // getUserprofile(data) {
-  //   return service
-  //     .get("/userprofile/:id")
-  //     .then(res => res.data)
-  //     .catch(errHandler);
-  // },
+  getUserprofile(data) {
+    return service
+      .get("/userprofile", data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
 
   search(city) {
     return service.get("/search", { city: city }).then(res => res.data);

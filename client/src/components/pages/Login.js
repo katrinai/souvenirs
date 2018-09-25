@@ -62,7 +62,7 @@ class Login extends Component {
           </Label>
           <Col sm={4}>
             <Input
-              type="text"
+              type="password"
               value={this.state.password}
               onChange={e => {
                 this.handleInputChange("password", e);

@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import api from "../../api";
+import {
+  Button,
+  Form,
+  Col,
+  FormGroup,
+  Input,
+  Label,
+  FormText
+} from "reactstrap";
 
 class RequestDetail extends Component {
   constructor(props) {
@@ -76,7 +85,6 @@ class RequestDetail extends Component {
         <br />
         <h3>Contact request owner</h3>
         <form onSubmit={this.handleRequestFullfill}>
-          {/* <label for="">Email</label> */}
           <input
             type="email"
             style={{ width: "200px" }}
@@ -86,7 +94,6 @@ class RequestDetail extends Component {
             value={this.state.to}
           />
           <br />
-          {/* <label for="">Subject</label> */}
           <input
             type="text"
             style={{ width: "200px" }}
@@ -96,7 +103,6 @@ class RequestDetail extends Component {
             onChange={this.handleChange}
           />
           <br />
-          {/* <label for="">Message</label> */}
           <textarea
             type="text"
             style={{ width: "300px", height: "200px" }}

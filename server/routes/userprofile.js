@@ -6,10 +6,11 @@ const { isLoggedIn } = require("../middlewares");
 
 //view user profile only of logged in user
 router.get("/", isLoggedIn, (req, res, next) => {
-  User.findById(req.params.id).then(usersFromDb => {
-    res.render("users", {
-      users: usersFromDb
-    });
+  User.findById(req.user.id).then(userFromDb => {
+    // Find the requests
+    // Request.findById(req.user._id).then(requestFromDb) => {
+    res.json({ user: userFromDb });
+    // add in res.json({requests: requestFromDb})
   });
 });
 

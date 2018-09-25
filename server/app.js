@@ -54,7 +54,6 @@ app.use("/api", require("./routes/auth"));
 app.use("/api/requests", require("./routes/requests"));
 app.use("/api/cities", require("./routes/cities"));
 app.use("/api/userprofile", require("./routes/userprofile"));
-// app.use("/api/userprofile/:id", require("./routes/userprofile/:id"));
 app.use("/api/search", require("./routes/search"));
 app.use("/api/send-email", require("./routes/send-email"));
 

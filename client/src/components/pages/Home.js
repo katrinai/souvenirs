@@ -24,7 +24,7 @@ class Home extends Component {
         <br />
         <a
           href="/search"
-          class="btn btn-danger btn-ml active"
+          className="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"
         >
@@ -32,7 +32,7 @@ class Home extends Component {
         </a>{" "}
         <a
           href="/newrequest"
-          class="btn btn-danger btn-ml active"
+          className="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"
         >

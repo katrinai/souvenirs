@@ -24,7 +24,6 @@ class NewRequest extends Component {
       cities: []
     };
   }
-
   componentDidMount() {
     api.getCities().then(cities => {
       this.setState({
