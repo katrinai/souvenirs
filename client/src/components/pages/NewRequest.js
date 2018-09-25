@@ -85,6 +85,7 @@ class NewRequest extends Component {
               <Input
                 type="text"
                 value={this.state.title}
+                placeholder="Short and clear title"
                 onChange={e => {
                   this.handleInputChange("title", e);
                 }}
@@ -99,6 +100,7 @@ class NewRequest extends Component {
               <Input
                 type="text"
                 value={this.state.text}
+                placeholder="Any specifications?"
                 onChange={e => {
                   this.handleInputChange("text", e);
                 }}
@@ -120,19 +122,30 @@ class NewRequest extends Component {
               />
             </Col>
           </FormGroup>
-          <FormGroup>
-            <Label for="selectCity">Select</Label>
-            <Input
-              type="select"
-              name="_city"
-              id="selectCity"
-              onChange={e => this.handleInputChange("_city", e)}
-            >
-              {this.state.cities.map(city => (
-                <option value={city._id}>{city.name}</option>
-              ))}
-            </Input>
+
+
+
+          <FormGroup row>
+            <Label for="selectCity" sm={4}>
+              Select a city:
+            </Label>
+            <Col sm={4}>
+              <Input
+                type="select"
+                name="_city"
+                id="selectCity"
+                onChange={e => this.handleInputChange("_city", e)}
+              >
+                {this.state.cities.map(city => (
+                  <option value={city._id}>{city.name}</option>
+                ))}
+              </Input>
+            </Col>
           </FormGroup>
+
+
+
+          
           <br />
           <Button color="danger" onClick={e => this.handleClick(e)}>
             Create request

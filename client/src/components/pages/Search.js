@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import api from "../../api";
 // import './Sample.css';
 import Request from "./Request";
+import {
+  Button,
+  Form,
+  Col,
+  FormGroup,
+  Input,
+  Label,
+  FormText
+} from "reactstrap";
 
 window.api = api;
 
@@ -52,21 +61,24 @@ class Search extends Component {
     }
     return (
       <div className="Search">
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <br />
-          <input
-            className="input is-rounded"
-            type="text"
-            style={{ width: "300px" }}
-            name="searchText"
-            placeholder="Search city here"
-            value={this.state.searchText}
-            onChange={this.handleChange}
-          />
-          <br />
-          {/* <button type="submit">Search</button> */}
-          <br />
-        </form>
+        <br />
+
+        <Form onSubmit={e => this.handleSubmit(e)}>
+          <FormGroup row>
+            <Label for="searchText" sm={4}>
+              Search for a city:
+            </Label>
+            <Col sm={4}>
+              <Input
+                type="text"
+                className="input is-rounded"
+                name="searchText"
+                value={this.state.searchText}
+                onChange={this.handleChange}
+              />
+            </Col>
+          </FormGroup>
+        </Form>
 
         {this.state.requests.length !== 0 ? (
           <h3>Results</h3>

@@ -96,6 +96,7 @@ class Signup extends Component {
               />
             </Col>
           </FormGroup>
+
           <FormGroup role="form" data-toggle="validator" row>
             <Label for="exampleName" sm={4}>
               Username*:
@@ -110,29 +111,39 @@ class Signup extends Component {
               />
             </Col>
           </FormGroup>
-          <FormGroup>
-            <Label for="examplePassword">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="examplePassword"
-              placeholder="password placeholder"
-            />
+
+          <FormGroup row>
+            <Label for="examplePassword" sm={4}>
+              Password:
+            </Label>
+            <Col sm={4}>
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                value={this.state.password}
+                onChange={e => {
+                  this.handleInputChange("password", e);
+                }}
+              />
+            </Col>
           </FormGroup>
+
+          <br />
+          <p>* these fields are required</p>
+          <br />
+          <p>
+            By signing up I do understand that it is not purpose of this app to
+            ask colleagues to bring forbidden items such as weapons, drugs or
+            other things which are against the law in my current base country.
+            <br />I also do understand that I should not ask my colleagues to
+            bring smelly cheese...{" "}
+          </p>
+
           <Button color="danger" onClick={e => this.handleClick(e)}>
             Signup
           </Button>
         </Form>
-        <br />
-        <p>* these fields are required</p>
-        <br />
-        <p>
-          By signing up I do understand that it is not purpose of this app to
-          ask colleagues to bring forbidden items such as weapons, drugs or
-          other things which are against the law in my current base country.
-          <br />I also do understand that I should not ask my colleagues to
-          bring smelly cheese...{" "}
-        </p>
         <br />
         <p class="account-message">
           Already signed up? <a href="/login">Login</a>

@@ -44,7 +44,7 @@ class Login extends Component {
         <h3>Login</h3>
         <FormGroup row>
           <Label for="exampleName" sm={4}>
-            Username
+            Username:
           </Label>
           <Col sm={4}>
             <Input
@@ -58,7 +58,7 @@ class Login extends Component {
         </FormGroup>
         <FormGroup row>
           <Label for="exampleName" sm={4}>
-            Password
+            Password:
           </Label>
           <Col sm={4}>
             <Input
