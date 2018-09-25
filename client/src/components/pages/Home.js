@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 
 class Home extends Component {
-  
   render() {
     return (
       <div className="Home">
-        <h2>Home</h2>
-        <p>This is the home page of Souvenirs</p>
+        <h3>Souvenirs</h3>
+        <p>
+          Souvenirs is a social platform to share requests from colleagues
+          abroad. <br />
+          <br /> Search for the destination of your next business trip and find
+          out how you can help your colleagues. <br /> Create a request to ask
+          colleagues to bring you some souvenirs on their next business trip.
+        </p>
         <br />
-        <p>Information will be displayed here.</p>
         <a
           href="/search"
-          class="btn btn-primary btn-lg active"
+          class="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"
         >
@@ -19,7 +23,7 @@ class Home extends Component {
         </a>{" "}
         <a
           href="/add-request" // or is it /userprofile/addrequest ?
-          class="btn btn-primary btn-lg active"
+          class="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"
         >

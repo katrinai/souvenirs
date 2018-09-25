@@ -7,7 +7,10 @@ class Userprofile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: []
+      username: "",
+      firstname: "",
+      lastname: "",
+      email: ""
     };
   }
   componentDidMount() {
@@ -26,27 +29,19 @@ class Userprofile extends Component {
 
     return (
       <div className="Userprofile">
-        {/* <Router>
-          <div>
-            <Route exact path="/userprofile/:id" component={Userprofile} />
-          </div>
-        </Router> */}
-        This is the User profile page
-        {/* <ul>
-          {this.state.users.map((user, idx) => {
-            return (
-              <Link to={`/userprofile/${user._id}`} key={idx}>
-                <li>Username: {user.username}</li>
-                <li>Firstname: {user.firstname}</li>
-                <li>Lastname: {user.lastname}</li>
-                <li>Email: {user.email}</li>
-              </Link>
-            );
-          })}
-        </ul>
+        <h3>User profile</h3>
+        Username: {this.state.username}
         <br />
-        <button type="?">Create request</button>
-        <br /> */}
+        First name: {this.state.firstname}
+        <br />
+        Last name: {this.state.lastname}
+        <br />
+        Email: {this.state.email}
+        <br />
+        <br />
+        <h3>Create a request</h3>
+        <br />
+        <h3>My request list:</h3>
       </div>
     );
   }

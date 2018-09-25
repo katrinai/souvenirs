@@ -32,21 +32,6 @@ router.get("/:id", isLoggedIn, (req, res, next) => {
     .catch(err => next(err));
 });
 
-// Route to add a request
-router.post("/", isLoggedIn, (req, res, next) => {
-  Request.create({
-    title: req.body.title,
-    text: req.body.text,
-    endDate: req.body.endDate,
-    _owner: req.user._id
-    //_city: req.city._id
-  })
-    .then(newRequest => {
-      res.json(newRequest);
-    })
-    .catch(err => next(err));
-});
-
 // Route to edit a request
 router.put("/:requestId", isLoggedIn, (req, res, next) => {
   Request.findById(req.params.requestId).then(request => {

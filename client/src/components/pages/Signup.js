@@ -42,7 +42,7 @@ class Signup extends Component {
   render() {
     return (
       <div className="Signup">
-        <h2>Signup</h2>
+        <h3>Signup</h3>
         <form>
           First name:{" "}
           <input
@@ -58,32 +58,42 @@ class Signup extends Component {
             onChange={e => this.handleInputChange("lastname", e)}
           />{" "}
           <br />
-          Email:{" "}
+          Email*:{" "}
           <input
             type="text"
             value={this.state.email}
             onChange={e => this.handleInputChange("email", e)}
           />{" "}
           <br />
-          Username:{" "}
+          Username*:{" "}
           <input
             type="text"
             value={this.state.username}
             onChange={e => this.handleInputChange("username", e)}
           />{" "}
           <br />
-          Password:{" "}
+          Password*:{" "}
           <input
             type="password"
             value={this.state.password}
             onChange={e => this.handleInputChange("password", e)}
           />{" "}
           <br />
+          <p>* these fields are required</p>
+          <br />
+          <p>
+            By signing up I do understand that it is not purpose of this app to
+            ask colleagues to bring forbidden items such as weapons, drugs or
+            other things which are against the law in my current base country.
+            <br />I also do understand that I should not ask my colleagues to
+            bring smelly cheese...{" "}
+          </p>
           <button onClick={e => this.handleClick(e)}>Signup</button>
         </form>
         <p class="account-message">
           Already signed up? <a href="/login">Login</a>
         </p>
+        <br />
       </div>
     );
   }

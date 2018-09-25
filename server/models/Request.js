@@ -12,6 +12,10 @@ const requestSchema = new Schema({
   _city: {
     type: Schema.Types.ObjectId,
     ref: "City"
+  },
+  taken: {
+    type: Boolean,
+    default: false
   }
 });
 

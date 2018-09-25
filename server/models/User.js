@@ -5,9 +5,18 @@ const userSchema = new Schema(
   {
     firstname: String,
     lastname: String,
-    email: String,
-    username: String,
-    password: String
+    email: {
+      type: String,
+      required: true
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: {

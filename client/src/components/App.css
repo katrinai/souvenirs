@@ -7,10 +7,10 @@ body * {
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+} */
 
 .App-header {
   background-color: #c30f08;
@@ -31,7 +31,7 @@ body * {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -39,4 +39,4 @@ body * {
   to {
     transform: rotate(360deg);
   }
-}
+} */

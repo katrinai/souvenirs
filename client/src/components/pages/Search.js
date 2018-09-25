@@ -69,9 +69,9 @@ class Search extends Component {
         </form>
 
         {this.state.requests.length !== 0 ? (
-          <h1>Result</h1>
+          <h3>Results</h3>
         ) : (
-          <h1>No results</h1>
+          <h3>No results</h3>
         )}
         {this.state.requests.map(request => (
           <Link to={`/request/${request._id}`}>

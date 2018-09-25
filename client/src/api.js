@@ -37,6 +37,13 @@ export default {
       .catch(errHandler);
   },
 
+  postNewRequest(data) {
+    return service
+      .post("/newrequest")
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
   getSearch(data) {
     return service
       .get("/search?city=" + data)
@@ -104,5 +111,12 @@ export default {
 
   search(city) {
     return service.get("/search", { city: city }).then(res => res.data);
+  },
+
+  postSendEmail(data) {
+    return service
+      .post("/send-email", data)
+      .then(res => res.data)
+      .catch(errHandler);
   }
 };

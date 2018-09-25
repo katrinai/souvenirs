@@ -7,7 +7,7 @@ class NewRequest extends Component {
     super(props);
   }
   render() {
-    return <h1>This is the new request</h1>;
+    return <h3>Add a new request here</h3>;
   }
 }
 
