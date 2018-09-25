@@ -1,4 +1,13 @@
 import React, { Component } from "react";
+import {
+  Button,
+  Form,
+  Col,
+  FormGroup,
+  Input,
+  Label,
+  FormText
+} from "reactstrap";
 
 class Home extends Component {
   render() {
@@ -22,7 +31,7 @@ class Home extends Component {
           I am travelling
         </a>{" "}
         <a
-          href="/add-request" // or is it /userprofile/addrequest ?
+          href="/newrequest"
           class="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"

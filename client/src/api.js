@@ -39,7 +39,7 @@ export default {
 
   postNewRequest(data) {
     return service
-      .post("/newrequest")
+      .post("/requests", data)
       .then(res => res.data)
       .catch(errHandler);
   },

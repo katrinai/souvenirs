@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import api from "../../api";
+import {
+  Button,
+  Form,
+  Col,
+  FormGroup,
+  Input,
+  Label,
+  FormText
+} from "reactstrap";
 
 class Login extends Component {
   constructor(props) {
@@ -33,23 +42,39 @@ class Login extends Component {
     return (
       <div className="Login">
         <h3>Login</h3>
-        <form>
-          Username:{" "}
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={e => this.handleInputChange("username", e)}
-          />{" "}
-          <br />
-          Password:{" "}
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={e => this.handleInputChange("password", e)}
-          />{" "}
-          <br />
-          <button onClick={e => this.handleClick(e)}>Login</button>
-        </form>
+        <FormGroup row>
+          <Label for="exampleName" sm={4}>
+            Username
+          </Label>
+          <Col sm={4}>
+            <Input
+              type="text"
+              value={this.state.usernam}
+              onChange={e => {
+                this.handleInputChange("username", e);
+              }}
+            />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="exampleName" sm={4}>
+            Password
+          </Label>
+          <Col sm={4}>
+            <Input
+              type="text"
+              value={this.state.password}
+              onChange={e => {
+                this.handleInputChange("password", e);
+              }}
+            />
+          </Col>
+        </FormGroup>
+
+        <Button color="danger" onClick={e => this.handleClick(e)}>
+          Login
+        </Button>
+        <br />
         <p class="account-message">
           Don't have an account yet? <a href="/signup">Signup</a>
         </p>

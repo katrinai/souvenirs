@@ -12,6 +12,21 @@ router.get("/", isLoggedIn, (req, res, next) => {
     .catch(err => next(err));
 });
 
+// Route to add a new request
+router.post("/", isLoggedIn, (req, res, next) => {
+  Request.create({
+    title: req.body.title,
+    text: req.body.text,
+    endDate: req.body.endDate,
+    _owner: req.user._id,
+    _city: req.body._city
+  })
+    .then(newRequest => {
+      res.json(newRequest);
+    })
+    .catch(err => next(err));
+});
+
 // Route to get details from one request
 router.get("/:id", isLoggedIn, (req, res, next) => {
   Request.findById(req.params.id)

@@ -5,8 +5,15 @@ const router = express.Router();
 // Route to get all cities
 router.get("/", (req, res, next) => {
   City.find()
+    .limit(1000)
     .then(city => {
-      res.json(city);
+      res.json(
+        city.sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        })
+      );
     })
     .catch(err => next(err));
 });

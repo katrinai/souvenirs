@@ -57,7 +57,6 @@ app.use("/api/userprofile", require("./routes/userprofile"));
 // app.use("/api/userprofile/:id", require("./routes/userprofile/:id"));
 app.use("/api/search", require("./routes/search"));
 app.use("/api/send-email", require("./routes/send-email"));
-app.use("/api/newrequest", require("./routes/newrequest"));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use("/api/*", (req, res, next) => {
