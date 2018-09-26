@@ -44,6 +44,13 @@ export default {
       .catch(errHandler);
   },
 
+  deleteRequest(id) {
+    return service
+      .delete("/requests/" + id)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
   getSearch(data) {
     return service
       .get("/search?city=" + data)

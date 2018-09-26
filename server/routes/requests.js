@@ -8,6 +8,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
   Request.find()
     .then(request => {
       res.json(request);
+      console.log("REQUEST", request);
     })
     .catch(err => next(err));
 });
@@ -47,53 +48,20 @@ router.get("/:id", isLoggedIn, (req, res, next) => {
     .catch(err => next(err));
 });
 
-// Route to edit a request
-router.put("/:requestId", isLoggedIn, (req, res, next) => {
-  Request.findById(req.params.requestId).then(request => {
-    if (request._owner.toString() === req.user._id.toString()) {
-      request.title = req.body.title;
-      request.text = req.body.text;
-      request.endDate = req.body.endDate;
-      request._owner = req.user._id;
-      //_city: req.city._id
-      request
-        .save()
-        .then(updatedRequest => {
-          res.json({
-            success: true,
-            updatedRequest
-          });
-        })
-        .catch(err => next(err));
-    } else {
-      res.json({
-        status: 403,
-        message: "Unauthorized"
-      });
-    }
-  });
-});
-
 // Route to delete a request
-router.delete("/:requestId", isLoggedIn, (req, res, next) => {
-  Request.findById(req.params.requestId).then(request => {
-    if (request._owner.toString() === req.user._id.toString()) {
-      request
-        .delete()
-        .then(deletedRequest => {
-          res.json({
-            success: true,
-            deletedRequest
-          });
-        })
-        .catch(err => next(err));
-    } else {
+router.delete("/:id", isLoggedIn, (req, res, next) => {
+  Request.findByIdAndRemove(req.params.id)
+    .then(() => {
       res.json({
-        status: 403,
-        message: "Unauthorized"
+        success: true
       });
-    }
-  });
+    })
+    .catch(err => {
+      return {
+        success: false,
+        error: err
+      };
+    });
 });
 
 module.exports = router;

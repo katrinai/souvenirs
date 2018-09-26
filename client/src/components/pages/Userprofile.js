@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Route, Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import api from "../../api";
-import axios from "axios";
+import Request from "./Request";
 import {
   Button,
   Form,
@@ -19,7 +19,8 @@ class Userprofile extends Component {
       username: "",
       firstname: "",
       lastname: "",
-      email: ""
+      email: "",
+      requests: []
     };
   }
   componentDidMount() {
@@ -30,8 +31,29 @@ class Userprofile extends Component {
         username: result.user.username,
         firstname: result.user.firstname,
         lastname: result.user.lastname,
-        email: result.user.email
+        email: result.user.email,
+        requests: result.requests
       });
+    });
+    // api
+    //   .getRequests()
+    //   .then(requests => {
+    //     console.log(requests);
+    //     this.setState({
+    //       requests: requests
+    //     });
+    //   })
+    //   .catch(err => console.log(err));
+  }
+
+  handleDelete(id) {
+    console.log("handleDelete");
+    api.deleteRequest(id).then(data => {
+      if (data.success) {
+        this.setState({
+          requests: this.state.requests.filter(request => request._id !== id)
+        });
+      }
     });
   }
 
@@ -57,8 +79,21 @@ class Userprofile extends Component {
           Create a request
         </a>
         <br />
-        <h3>My request list:</h3>
-        {/* req.user._id */}
+        <br />
+        <h3>My requests:</h3>
+        {this.state.requests.map(request => (
+          <tr key={request._owner._id}>
+            <td>{request.title}</td>
+            <button onClick={e => this.handleDelete(request._id)}>
+              Delete
+            </button>
+          </tr>
+        ))}
+        {/* {this.state.requests.map(request => (
+          <Link to={`/request/${request._owner._id}`}>
+            <Request requestInfo={request} />
+          </Link>
+        ))} */}
       </div>
     );
   }

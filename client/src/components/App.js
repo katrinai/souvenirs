@@ -18,7 +18,6 @@ class App extends Component {
     this.state = {
       countries: []
     };
-    // api.loadUser();
   }
 
   handleLogoutClick(e) {
@@ -51,8 +50,7 @@ class App extends Component {
           <Route path="/request/:id" component={RequestDetails} />
           <Route path="/send-email" component={SendEmail} />
           <Route path="/newrequest" component={NewRequest} />
-          {/* <Route path="/newRequest" component={NewRequest} /> */}
-          <Route render={() => <h2>404</h2>} />
+          <Route render={() => <h3>404! Sorry...</h3>} />
         </Switch>
       </div>
     );

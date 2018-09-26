@@ -52,19 +52,6 @@ class NewRequest extends Component {
       .then(result => {
         console.log("SUCCESS!");
         this.props.history.push("/userprofile");
-        // this.setState({
-        //   title: result.title,
-        //   text: result.text,
-        //   endDate: result.endDate,
-        //   _owner: result._owner,
-        //   _city: result._city,
-        //   message: `Your request '${this.state.title}' has been created`
-        // });
-        // setTimeout(() => {
-        //   this.setState({
-        //     message: null
-        //   });
-        // }, 2000);
       })
       .catch(err => {
         console.log("ERROR");
@@ -74,7 +61,7 @@ class NewRequest extends Component {
   render() {
     return (
       <div>
-        <h3>Add a new request here</h3>
+        <h3>New request</h3>
         <Form>
           <FormGroup row>
             <Label for="exampleName" sm={4}>
@@ -122,8 +109,6 @@ class NewRequest extends Component {
             </Col>
           </FormGroup>
 
-
-
           <FormGroup row>
             <Label for="selectCity" sm={4}>
               Select a city:
@@ -142,9 +127,6 @@ class NewRequest extends Component {
             </Col>
           </FormGroup>
 
-
-
-          
           <br />
           <Button color="danger" onClick={e => this.handleClick(e)}>
             Create request
