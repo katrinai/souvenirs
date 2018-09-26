@@ -6,7 +6,8 @@ const Request = require("../models/Request");
 
 router.post("/", isLoggedIn, (req, res, next) => {
   let fromEmail = req.user.email;
-  let { to, subject, message } = req.body;
+  let message = req.body.message + "// My email is: " + req.user.email;
+  let { to, subject } = req.body;
   let requestId = req.body.requestId;
 
   let transporter = nodemailer.createTransport({

@@ -140,7 +140,7 @@ class Signup extends Component {
           <p>* these fields are required</p>
 
           <FormGroup check>
-            <Label check>
+            <Label check style={{ width: "650px" }}>
               <Input type="checkbox" />
               By signing up, I understand that the purpose of this app is not to
               ask colleagues to bring forbidden items such as weapons, drugs or
