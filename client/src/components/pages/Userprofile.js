@@ -22,6 +22,9 @@ class Userprofile extends Component {
       email: "",
       requests: []
     };
+    if (!api.isLoggedIn()) {
+      this.props.history.push("/login")
+    }
   }
   componentDidMount() {
     api.getUserprofile().then(result => {
@@ -81,14 +84,26 @@ class Userprofile extends Component {
         <br />
         <br />
         <h3>My requests:</h3>
-        {this.state.requests.map(request => (
-          <tr key={request._owner._id}>
-            <td>{request.title}</td>
-            <button onClick={e => this.handleDelete(request._id)}>
-              Delete
-            </button>
-          </tr>
-        ))}
+        <table className="center-table">
+          <tbody>
+            {this.state.requests.map(request => (
+              <tr key={request._id}>
+                <td>
+                  <strong>{request.title}</strong>
+                </td>
+                <td>{request.text}</td>
+                <td>
+                  <Button
+                    className="btn btn-danger btn-ml active"
+                    onClick={e => this.handleDelete(request._id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         {/* {this.state.requests.map(request => (
           <Link to={`/request/${request._owner._id}`}>
             <Request requestInfo={request} />

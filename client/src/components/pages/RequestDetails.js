@@ -72,9 +72,9 @@ class RequestDetail extends Component {
     return (
       <div className="RequestDetails">
         <h3>Request details</h3>
-        City: {this.state.name}
+        City: <strong>{this.state.name}</strong>
         <br />
-        Title: {this.state.request.title}
+        Title: <strong>{this.state.request.title}</strong>
         <br />
         Description: {this.state.request.text}
         <br />
@@ -84,7 +84,7 @@ class RequestDetail extends Component {
         <br />
         <br />
         <h3>Contact request owner</h3>
-        <form onSubmit={this.handleRequestFullfill}>
+        <Form onSubmit={this.handleRequestFullfill}>
           <input
             type="email"
             style={{ width: "200px" }}
@@ -116,7 +116,7 @@ class RequestDetail extends Component {
           <br />
           <button type="submit">Send</button>
           <br />
-        </form>
+        </Form>
       </div>
     );
   }

@@ -9,7 +9,6 @@ import NewRequest from "./pages/NewRequest";
 import Search from "./pages/Search";
 import SendEmail from "./pages/SendEmail";
 import api from "../api";
-import "./App.css";
 // import reactstrap from "reactstrap";
 
 class App extends Component {
