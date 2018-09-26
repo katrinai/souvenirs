@@ -9,6 +9,14 @@ body {
   margin: auto;
 }
 
+.request-table {
+  margin: auto;
+}
+
+.email-form {
+  margin: auto;
+}
+
 .App {
   text-align: center;
 }

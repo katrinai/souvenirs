@@ -4,6 +4,9 @@ import api from "../../api";
 // import './Sample.css';
 import Request from "./Request";
 import {
+  Card,
+  CardTitle,
+  CardText,
   Button,
   Form,
   Col,
@@ -92,6 +95,9 @@ class Search extends Component {
             <Request requestInfo={request} />
           </Link>
         ))}
+
+
+
       </div>
     );
   }

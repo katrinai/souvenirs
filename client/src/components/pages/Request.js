@@ -1,16 +1,23 @@
 import React, { Component } from "react";
+import { Card, CardTitle, CardText, Button } from "reactstrap";
 
 const Request = props => {
   return (
-    <div className="Request">
-      {
-        <ul>
-          <li key={props.requestInfo._id}>
-            {props.requestInfo._city.name} - {props.requestInfo.title} -{" "}
-            {props.requestInfo._owner}
-          </li>
-        </ul>
-      }
+    <div>
+      <Card body className="text-center">
+        <tr key={props.requestInfo._id} />
+        <CardTitle>{props.requestInfo._city.name}</CardTitle>
+        <CardText>{props.requestInfo.title}</CardText>
+        <Button>Details</Button>
+      </Card>
+
+      {/* <table className="request-table">
+        <tbody>
+          <tr key={props.requestInfo._id}>
+            {props.requestInfo._city.name} - {props.requestInfo.title}
+          </tr>
+        </tbody>
+      </table> */}
     </div>
   );
 };

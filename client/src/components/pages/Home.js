@@ -10,6 +10,11 @@ import {
 } from "reactstrap";
 
 class Home extends Component {
+  handleClick() {
+    alert("Are you logged in?");
+    console.log("handleClick");
+  }
+
   render() {
     return (
       <div className="Home">
@@ -27,6 +32,7 @@ class Home extends Component {
           className="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"
+          onClick={e => this.handleClick()}
         >
           I am travelling
         </a>{" "}
@@ -35,6 +41,7 @@ class Home extends Component {
           className="btn btn-danger btn-ml active"
           role="button"
           aria-pressed="true"
+          onClick={e => this.handleClick()}
         >
           I have a request
         </a>

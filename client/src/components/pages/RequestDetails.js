@@ -84,8 +84,13 @@ class RequestDetail extends Component {
         <br />
         <br />
         <h3>Contact request owner</h3>
+        {/* <img
+          src="http://freevectorfinder.com/images/thums/envelope_closed_bw_172466.jpg"
+          alt="closed envelope"
+        /> */}
         <Form onSubmit={this.handleRequestFullfill}>
-          <input
+          <Input
+            className="email-form"
             type="email"
             style={{ width: "200px" }}
             placeholder="Email address of owner"
@@ -94,7 +99,8 @@ class RequestDetail extends Component {
             value={this.state.to}
           />
           <br />
-          <input
+          <Input
+            className="email-form"
             type="text"
             style={{ width: "200px" }}
             placeholder="Subject"
@@ -103,8 +109,11 @@ class RequestDetail extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <textarea
-            type="text"
+
+          <Input
+            className="email-form"
+            type="textarea"
+            name="text"
             style={{ width: "300px", height: "200px" }}
             placeholder="Your message: Who are you?
             When do you travel?
@@ -114,7 +123,7 @@ class RequestDetail extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <button type="submit">Send</button>
+          <Button type="submit">Send</Button>
           <br />
         </Form>
       </div>

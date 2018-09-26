@@ -5,6 +5,7 @@ import {
   Form,
   Col,
   FormGroup,
+  FormFeedback,
   Input,
   Label,
   FormText
@@ -41,7 +42,7 @@ class Signup extends Component {
       .signup(data)
       .then(result => {
         console.log("SUCCESS!");
-        this.props.history.push("/userprofile"); // later redirect to the "/userprofile" page
+        this.props.history.push("/login");
       })
       .catch(err => {
         console.log("ERROR");
@@ -87,6 +88,7 @@ class Signup extends Component {
             </Label>
             <Col sm={4}>
               <Input
+                invalid
                 type="text"
                 value={this.state.email}
                 onChange={e => {
@@ -103,21 +105,26 @@ class Signup extends Component {
             </Label>
             <Col sm={4}>
               <Input
+                invalid
                 type="text"
                 value={this.state.username}
                 onChange={e => {
                   this.handleInputChange("username", e);
                 }}
               />
+              <FormFeedback tooltip>
+                Oh! that name is already taken
+              </FormFeedback>
             </Col>
           </FormGroup>
 
           <FormGroup row>
             <Label for="examplePassword" sm={4}>
-              Password:
+              Password*:
             </Label>
             <Col sm={4}>
               <Input
+                invalid
                 type="password"
                 name="password"
                 id="examplePassword"
@@ -131,15 +138,19 @@ class Signup extends Component {
 
           <br />
           <p>* these fields are required</p>
-          <p>
-            By signing up, I understand that the purpose of this app is not to
-            ask colleagues to bring forbidden items such as weapons, drugs or
-            other things which are not permitted in the country I am currently
-            based in.
-            <br />I also understand that I should not ask my colleagues to bring
-            smelly cheese...
-          </p>
 
+          <FormGroup check>
+            <Label check>
+              <Input type="checkbox" />
+              By signing up, I understand that the purpose of this app is not to
+              ask colleagues to bring forbidden items such as weapons, drugs or
+              other things which are not permitted in the country I am currently
+              based in.
+              <br />I also understand that I should not ask my colleagues to
+              bring smelly cheese or the Durian fruit...
+            </Label>
+          </FormGroup>
+          <br />
           <Button color="danger" onClick={e => this.handleClick(e)}>
             Signup
           </Button>

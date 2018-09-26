@@ -23,7 +23,7 @@ class Userprofile extends Component {
       requests: []
     };
     if (!api.isLoggedIn()) {
-      this.props.history.push("/login")
+      this.props.history.push("/login");
     }
   }
   componentDidMount() {
@@ -38,18 +38,10 @@ class Userprofile extends Component {
         requests: result.requests
       });
     });
-    // api
-    //   .getRequests()
-    //   .then(requests => {
-    //     console.log(requests);
-    //     this.setState({
-    //       requests: requests
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
   }
 
   handleDelete(id) {
+    alert("Do you really want to delete?");
     console.log("handleDelete");
     api.deleteRequest(id).then(data => {
       if (data.success) {
