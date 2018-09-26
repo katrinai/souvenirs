@@ -55,7 +55,7 @@ class Signup extends Component {
         <h3>Signup</h3>
         <Form>
           <FormGroup row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               First name:
             </Label>
             <Col sm={4}>
@@ -69,7 +69,7 @@ class Signup extends Component {
             </Col>
           </FormGroup>
           <FormGroup row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               Last name:
             </Label>
             <Col sm={4}>
@@ -83,7 +83,7 @@ class Signup extends Component {
             </Col>
           </FormGroup>
           <FormGroup role="form" data-toggle="validator" row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               Email*:
             </Label>
             <Col sm={4}>
@@ -100,7 +100,7 @@ class Signup extends Component {
           </FormGroup>
 
           <FormGroup role="form" data-toggle="validator" row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               Username*:
             </Label>
             <Col sm={4}>
@@ -119,7 +119,7 @@ class Signup extends Component {
           </FormGroup>
 
           <FormGroup row>
-            <Label for="examplePassword" sm={4}>
+            <Label className="text-right" for="examplePassword" sm={4}>
               Password*:
             </Label>
             <Col sm={4}>

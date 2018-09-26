@@ -70,7 +70,7 @@ class Search extends Component {
 
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup row>
-            <Label for="searchText" sm={4}>
+            <Label className="text-right" for="searchText" sm={4}>
               Search for a city:
             </Label>
             <Col sm={4}>
@@ -95,9 +95,6 @@ class Search extends Component {
             <Request requestInfo={request} />
           </Link>
         ))}
-
-
-
       </div>
     );
   }
