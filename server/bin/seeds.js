@@ -16,10 +16,12 @@ require("../configs/database");
 let users = [
   {
     username: "alice",
+    email: "alice@gmail.com",
     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt))
   },
   {
     username: "bob",
+    email: "bob@gmail.com",
     password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt))
   }
 ];

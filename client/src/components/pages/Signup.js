@@ -131,13 +131,13 @@ class Signup extends Component {
 
           <br />
           <p>* these fields are required</p>
-          <br />
           <p>
-            By signing up I do understand that it is not purpose of this app to
+            By signing up, I understand that the purpose of this app is not to
             ask colleagues to bring forbidden items such as weapons, drugs or
-            other things which are against the law in my current base country.
-            <br />I also do understand that I should not ask my colleagues to
-            bring smelly cheese...{" "}
+            other things which are not permitted in the country I am currently
+            based in.
+            <br />I also understand that I should not ask my colleagues to bring
+            smelly cheese...
           </p>
 
           <Button color="danger" onClick={e => this.handleClick(e)}>
