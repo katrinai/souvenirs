@@ -50,6 +50,8 @@ class Search extends Component {
     });
   }
 
+  // componentDidMount()
+
   render() {
     if (this.state.isLoading) {
       return (

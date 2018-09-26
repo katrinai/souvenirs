@@ -6,8 +6,8 @@ const Request = props => {
       {
         <ul>
           <li key={props.requestInfo._id}>
-            {props.requestInfo.title} <br />
-            {props.requestInfo._owner.username} <br />
+            {props.requestInfo._city.name} - {props.requestInfo.title} -{" "}
+            {props.requestInfo._owner}
           </li>
         </ul>
       }

@@ -84,7 +84,7 @@ class NewRequest extends Component {
             </Label>
             <Col sm={4}>
               <Input
-                type="text"
+                type="textarea"
                 value={this.state.text}
                 placeholder="Any specifications?"
                 onChange={e => {
@@ -99,7 +99,7 @@ class NewRequest extends Component {
             </Label>
             <Col sm={4}>
               <Input
-                type="text"
+                type="date"
                 value={this.state.endDate}
                 placeholder="dd.mm.yyyy"
                 onChange={e => {
