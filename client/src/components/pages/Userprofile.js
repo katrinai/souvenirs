@@ -80,22 +80,20 @@ class Userprofile extends Component {
         <br />
         <h3>My requests:</h3>
         {this.state.requests.map(request => (
-          <div className="usersRequestCards">
+          <div key={request._id} className="usersRequestCards">
             <Card
               body
               className="text-center"
               style={{ width: "300px", height: "auto" }}
             >
-              <tr key={request._id}>
-                <CardTitle>{request.title}</CardTitle>
-                <CardText>{request.text}</CardText>
-                <Button
-                  className="btn btn-danger btn-ml active"
-                  onClick={e => this.handleDelete(request._id)}
-                >
-                  Delete
-                </Button>
-              </tr>
+              <CardTitle>{request.title}</CardTitle>
+              <CardText>{request.text}</CardText>
+              <Button
+                className="btn btn-danger btn-ml active"
+                onClick={e => this.handleDelete(request._id)}
+              >
+                Delete
+              </Button>
             </Card>
           </div>
         ))}

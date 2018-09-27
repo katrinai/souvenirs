@@ -3,18 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../../api";
 // import './Sample.css';
 import Request from "./Request";
-import {
-  Card,
-  CardTitle,
-  CardText,
-  Button,
-  Form,
-  Col,
-  FormGroup,
-  Input,
-  Label,
-  FormText
-} from "reactstrap";
+import { Form, Col, FormGroup, Input, Label } from "reactstrap";
 
 window.api = api;
 
@@ -92,8 +81,12 @@ class Search extends Component {
         )}
 
         {this.state.requests.map(request => (
-          <Link style={{ color: "red" }} to={`/request/${request._id}`}>
-            <Request requestInfo={request} />
+          <Link
+            key={request._id + "link"}
+            style={{ color: "red" }}
+            to={`/request/${request._id}`}
+          >
+            <Request key={request._id} requestInfo={request} />
           </Link>
         ))}
       </div>

@@ -17,7 +17,7 @@ class NewRequest extends Component {
       title: "",
       text: "",
       endDate: "",
-      _city: null,
+      _city: "5ba405ee48cbed12f8f210dc",
       // _owner: req.user._id,
       // _city: req.city._id,
       message: null,
@@ -122,7 +122,9 @@ class NewRequest extends Component {
                 onChange={e => this.handleInputChange("_city", e)}
               >
                 {this.state.cities.map(city => (
-                  <option value={city._id}>{city.name}</option>
+                  <option key={city._id} value={city._id}>
+                    {city.name}
+                  </option>
                 ))}
               </Input>
             </Col>

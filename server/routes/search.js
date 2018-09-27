@@ -40,6 +40,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
         })
           .populate("_city")
           .then(requests => {
+            console.log("BACK -->", requests);
             res.json(requests);
           });
       }
