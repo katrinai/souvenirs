@@ -18,12 +18,13 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
+        <p />
         <h3>Souvenirs</h3>
         <p>
           Souvenirs is a social platform to share requests from colleagues
           abroad. <br />
           <br /> Search for the destination of your next business trip and find
-          out how you can help your colleagues. <br /> Create a request to ask
+          out how you can help your colleagues. Or create a request to ask
           colleagues to bring you some souvenirs on their next business trip.
         </p>
         <br />

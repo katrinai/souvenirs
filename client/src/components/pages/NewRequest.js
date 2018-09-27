@@ -61,10 +61,11 @@ class NewRequest extends Component {
   render() {
     return (
       <div>
+        <p />
         <h3>New request</h3>
         <Form>
           <FormGroup row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               Title:
             </Label>
             <Col sm={4}>
@@ -79,7 +80,7 @@ class NewRequest extends Component {
             </Col>
           </FormGroup>
           <FormGroup row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               Description:
             </Label>
             <Col sm={4}>
@@ -94,7 +95,7 @@ class NewRequest extends Component {
             </Col>
           </FormGroup>
           <FormGroup row>
-            <Label for="exampleName" sm={4}>
+            <Label className="text-right" for="exampleName" sm={4}>
               End Date:
             </Label>
             <Col sm={4}>
@@ -110,7 +111,7 @@ class NewRequest extends Component {
           </FormGroup>
 
           <FormGroup row>
-            <Label for="selectCity" sm={4}>
+            <Label className="text-right" for="selectCity" sm={4}>
               Select a city:
             </Label>
             <Col sm={4}>

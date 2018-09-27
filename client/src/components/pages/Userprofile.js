@@ -55,6 +55,7 @@ class Userprofile extends Component {
   render() {
     return (
       <div className="Userprofile">
+        <p />
         <h3>User profile</h3>
         Username: {this.state.username}
         <br />

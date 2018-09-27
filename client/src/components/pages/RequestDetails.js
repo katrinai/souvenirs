@@ -71,6 +71,7 @@ class RequestDetail extends Component {
     console.log("REQUEST", this.state.username);
     return (
       <div className="RequestDetails">
+        <p />
         <h3>Request details</h3>
         City: <strong>{this.state.name}</strong>
         <br />

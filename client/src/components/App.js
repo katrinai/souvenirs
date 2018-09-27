@@ -9,6 +9,7 @@ import NewRequest from "./pages/NewRequest";
 import Search from "./pages/Search";
 import SendEmail from "./pages/SendEmail";
 import api from "../api";
+import envelope from "./envelope-05.svg";
 // import reactstrap from "reactstrap";
 
 class App extends Component {
@@ -51,6 +52,9 @@ class App extends Component {
           <Route path="/newrequest" component={NewRequest} />
           <Route render={() => <h3>404! Sorry...</h3>} />
         </Switch>
+        <footer>
+          <img src={envelope} alt="international envelope" />
+        </footer>
       </div>
     );
   }

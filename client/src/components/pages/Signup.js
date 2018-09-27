@@ -8,7 +8,8 @@ import {
   FormFeedback,
   Input,
   Label,
-  FormText
+  FormText,
+  Alert
 } from "reactstrap";
 
 class Signup extends Component {
@@ -19,14 +20,27 @@ class Signup extends Component {
       lastname: "",
       email: "",
       username: "",
-      password: ""
+      password: "",
+      message: "",
+      visible: true
+      // disclaimer: false
     };
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onDismiss() {
+    this.setState({ visible: false });
   }
 
   handleInputChange(stateFieldName, event) {
     this.setState({
-      [stateFieldName]: event.target.value
+      [stateFieldName]: event.target.value,
+      message: ""
     });
+  }
+
+  handleDisclaimerClick(e) {
+    this.setState({ disclaimer: true });
   }
 
   handleClick(e) {
@@ -42,18 +56,34 @@ class Signup extends Component {
       .signup(data)
       .then(result => {
         console.log("SUCCESS!");
-        this.props.history.push("/login");
+        this.props.history.push("/userprofile");
       })
       .catch(err => {
         console.log("ERROR");
+        this.setState({
+          message: "You cannot use these credentials"
+        });
       });
   }
 
   render() {
     return (
       <div className="Signup">
+        <p />
         <h3>Signup</h3>
         <Form>
+          <Col className="text-center" sm={4}>
+            {this.state.message && (
+              <Alert
+                color="danger"
+                isOpen={this.state.visible}
+                toggle={this.onDismiss}
+              >
+                {this.state.message}
+              </Alert>
+            )}
+          </Col>
+
           <FormGroup row>
             <Label className="text-right" for="exampleName" sm={4}>
               First name:
@@ -112,9 +142,7 @@ class Signup extends Component {
                   this.handleInputChange("username", e);
                 }}
               />
-              <FormFeedback tooltip>
-                Oh! that name is already taken
-              </FormFeedback>
+              <div />
             </Col>
           </FormGroup>
 
@@ -136,12 +164,14 @@ class Signup extends Component {
             </Col>
           </FormGroup>
 
-          <br />
           <p>* these fields are required</p>
 
           <FormGroup check>
             <Label check style={{ width: "650px" }}>
-              <Input type="checkbox" />
+              <Input
+                type="checkbox"
+                onClick={e => this.handleDisclaimerClick(e)}
+              />
               By signing up, I understand that the purpose of this app is not to
               ask colleagues to bring forbidden items such as weapons, drugs or
               other things which are not permitted in the country I am currently
@@ -155,11 +185,10 @@ class Signup extends Component {
             Signup
           </Button>
         </Form>
-        <br />
+
         <p class="account-message">
           Already signed up? <a href="/login">Login</a>
         </p>
-        <br />
       </div>
     );
   }
