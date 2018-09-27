@@ -32,18 +32,19 @@ class App extends Component {
             <h1 className="App-title">Welcome to Souvenirs</h1>
             <NavLink to="/" exact activeClassName="forestgreen">
               Home
-            </NavLink>
-            {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-            {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+            </NavLink>{" "}
+            {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}{" "}
+            {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}{" "}
             {api.isLoggedIn() && (
-              <NavLink to="/userprofile">Userprofile</NavLink>
-            )}
+              <NavLink to="/userprofile">My requests</NavLink>
+            )}{" "}
             {api.isLoggedIn() && (
               <NavLink to="/" onClick={e => this.handleLogoutClick(e)}>
                 Logout
               </NavLink>
             )}
           </header>
+          <div className="Blueline" />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />

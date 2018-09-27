@@ -59,13 +59,12 @@ class Userprofile extends Component {
     return (
       <div className="Userprofile">
         <p />
-        <h3>User profile</h3>
         Username: {this.state.username}
         <br />
-        First name: {this.state.firstname}
+        {/* First name: {this.state.firstname}
         <br />
         Last name: {this.state.lastname}
-        <br />
+        <br /> */}
         Email: {this.state.email}
         <br />
         <br />
@@ -81,7 +80,7 @@ class Userprofile extends Component {
         <br />
         <h3>My requests:</h3>
         {this.state.requests.map(request => (
-          <div className="requestCards">
+          <div className="usersRequestCards">
             <Card
               body
               className="text-center"

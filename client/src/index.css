@@ -26,7 +26,7 @@ body {
 }
 
 .card-title {
-  background-color: rgb(247, 220, 220);
+  background-color: rgb(206, 198, 250);
 }
 
 .App {
@@ -52,6 +52,12 @@ body {
   background-color: #c30f08;
 }
 
+.Blueline {
+  height: 5px;
+  width: 100%;
+  background-color: rgb(70, 56, 136);
+}
+
 .App-intro {
   font-size: large;
 }
@@ -61,24 +67,16 @@ body {
     100vh - 70px
   ); /* 60px for img + 10px for margin top footer */
 }
-
-
 .requestCards {
   display: inline-block;
 }
-
-
-/* .usersRequestCards {
+.usersRequestCards {
   display: inline-block;
-} */
-
-
+}
 .Home {
   margin-right: 55px;
   margin-left: 55px;
 }
-
-
 footer {
   /* position: fixed; */
   margin-top: 10px;

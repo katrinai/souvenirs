@@ -91,14 +91,11 @@ class Search extends Component {
           <h3>No results</h3>
         )}
 
-        
         {this.state.requests.map(request => (
-          <Link to={`/request/${request._id}`}>
+          <Link style={{ color: "red" }} to={`/request/${request._id}`}>
             <Request requestInfo={request} />
           </Link>
         ))}
-
-
       </div>
     );
   }
