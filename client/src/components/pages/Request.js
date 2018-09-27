@@ -3,6 +3,7 @@ import { Card, CardTitle, CardText, Button } from "reactstrap";
 
 const Request = props => {
   return (
+    
     <div className="requestCards">
       <Card
         body
@@ -22,6 +23,7 @@ const Request = props => {
           </tr>
         </tbody>
       </table> */}
+
     </div>
   );
 };

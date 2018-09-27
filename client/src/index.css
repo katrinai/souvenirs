@@ -61,13 +61,24 @@ body {
     100vh - 70px
   ); /* 60px for img + 10px for margin top footer */
 }
+
+
 .requestCards {
   display: inline-block;
 }
+
+
+/* .usersRequestCards {
+  display: inline-block;
+} */
+
+
 .Home {
   margin-right: 55px;
   margin-left: 55px;
 }
+
+
 footer {
   /* position: fixed; */
   margin-top: 10px;

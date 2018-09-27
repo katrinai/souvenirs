@@ -9,7 +9,10 @@ import {
   FormGroup,
   Input,
   Label,
-  FormText
+  FormText,
+  Card,
+  CardTitle,
+  CardText
 } from "reactstrap";
 
 class Userprofile extends Component {
@@ -77,7 +80,29 @@ class Userprofile extends Component {
         <br />
         <br />
         <h3>My requests:</h3>
-        <table className="center-table">
+        {this.state.requests.map(request => (
+          <div className="requestCards">
+            <Card
+              body
+              className="text-center"
+              style={{ width: "300px", height: "180px" }}
+            >
+              <tr key={request._id}>
+                <CardTitle>
+                  {request.title}
+                </CardTitle>
+                <CardText>{request.text}</CardText>
+                <Button
+                  className="btn btn-danger btn-ml active"
+                  onClick={e => this.handleDelete(request._id)}
+                >
+                  Delete
+                </Button>
+              </tr>
+            </Card>
+          </div>
+        ))}
+        {/* <table className="center-table">
           <tbody>
             {this.state.requests.map(request => (
               <tr key={request._id}>
@@ -96,7 +121,7 @@ class Userprofile extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
         {/* {this.state.requests.map(request => (
           <Link to={`/request/${request._owner._id}`}>
             <Request requestInfo={request} />
