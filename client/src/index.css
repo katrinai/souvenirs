@@ -64,6 +64,10 @@ body {
 .requestCards {
   display: inline-block;
 }
+.Home {
+  margin-right: 55px;
+  margin-left: 55px;
+}
 footer {
   /* position: fixed; */
   margin-top: 10px;
