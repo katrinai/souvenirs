@@ -42,7 +42,9 @@ class Search extends Component {
     });
   }
 
-  // componentDidMount()
+  // componentDidMount() {
+
+  // }
 
   render() {
     if (this.state.isLoading) {
