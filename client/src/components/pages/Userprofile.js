@@ -85,12 +85,10 @@ class Userprofile extends Component {
             <Card
               body
               className="text-center"
-              style={{ width: "300px", height: "180px" }}
+              style={{ width: "300px", height: "auto" }}
             >
               <tr key={request._id}>
-                <CardTitle>
-                  {request.title}
-                </CardTitle>
+                <CardTitle>{request.title}</CardTitle>
                 <CardText>{request.text}</CardText>
                 <Button
                   className="btn btn-danger btn-ml active"
