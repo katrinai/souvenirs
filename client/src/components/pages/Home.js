@@ -10,10 +10,10 @@ import {
 } from "reactstrap";
 
 class Home extends Component {
-  handleClick() {
-     alert("Are you logged in?");
-    console.log("handleClick");
-  }
+  // handleClick() {
+  //    alert("Are you logged in?");
+  //   console.log("handleClick");
+  // }
 
   render() {
     return (
