@@ -22,14 +22,14 @@ class Signup extends Component {
       username: "",
       password: "",
       message: "",
-      visible: true
-      // disclaimer: false
+      visible: true,
+      disclaimer: false
     };
     this.onDismiss = this.onDismiss.bind(this);
   }
 
   onDismiss() {
-    this.setState({ visible: false });
+    this.setState({ message: "" });
   }
 
   handleInputChange(stateFieldName, event) {
@@ -40,11 +40,17 @@ class Signup extends Component {
   }
 
   handleDisclaimerClick(e) {
-    this.setState({ disclaimer: true });
+    this.setState({ disclaimer: !this.state.disclaimer });
   }
 
   handleClick(e) {
     e.preventDefault();
+    if (!this.state.disclaimer) {
+      this.setState({
+        message: "Check the disclaimer!"
+      });
+      return;
+    }
     let data = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
@@ -167,9 +173,10 @@ class Signup extends Component {
           <p>* these fields are required</p>
 
           <FormGroup check>
-            <Label check style={{ width: "650px" }}>
+            <Label check>
               <Input
                 type="checkbox"
+                checked={this.state.disclaimer}
                 onClick={e => this.handleDisclaimerClick(e)}
               />
               By signing up, I understand that the purpose of this app is not to

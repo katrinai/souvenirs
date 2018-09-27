@@ -11,7 +11,7 @@ import {
 
 class Home extends Component {
   handleClick() {
-    alert("Are you logged in?");
+     alert("Are you logged in?");
     console.log("handleClick");
   }
 

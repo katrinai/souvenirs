@@ -27,31 +27,35 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Souvenirs</h1>
-          <NavLink to="/" exact activeClassName="forestgreen">
-            Home
-          </NavLink>
-          {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
-          {api.isLoggedIn() && <NavLink to="/userprofile">Userprofile</NavLink>}
-          {api.isLoggedIn() && (
-            <NavLink to="/" onClick={e => this.handleLogoutClick(e)}>
-              Logout
+        <div className="non-footer">
+          <header className="App-header">
+            <h1 className="App-title">Welcome to Souvenirs</h1>
+            <NavLink to="/" exact activeClassName="forestgreen">
+              Home
             </NavLink>
-          )}
-        </header>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/search" component={Search} />
-          <Route path="/userprofile" component={Userprofile} />
-          <Route path="/request/:id" component={RequestDetails} />
-          <Route path="/send-email" component={SendEmail} />
-          <Route path="/newrequest" component={NewRequest} />
-          <Route render={() => <h3>404! Sorry...</h3>} />
-        </Switch>
+            {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+            {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
+            {api.isLoggedIn() && (
+              <NavLink to="/userprofile">Userprofile</NavLink>
+            )}
+            {api.isLoggedIn() && (
+              <NavLink to="/" onClick={e => this.handleLogoutClick(e)}>
+                Logout
+              </NavLink>
+            )}
+          </header>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/search" component={Search} />
+            <Route path="/userprofile" component={Userprofile} />
+            <Route path="/request/:id" component={RequestDetails} />
+            <Route path="/send-email" component={SendEmail} />
+            <Route path="/newrequest" component={NewRequest} />
+            <Route render={() => <h3>404! Sorry...</h3>} />
+          </Switch>
+        </div>
         <footer>
           <img src={envelope} alt="international envelope" />
         </footer>
