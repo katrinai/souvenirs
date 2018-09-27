@@ -9,9 +9,7 @@ const Request = props => {
         className="text-center"
         style={{ width: "300px", height: "150px" }}
       >
-        <CardTitle>
-          {props.requestInfo._city && props.requestInfo._city.name}
-        </CardTitle>
+        <CardTitle>{props.requestInfo._city.name}</CardTitle>
         <CardText>{props.requestInfo.title}</CardText>
         <Button>Details</Button>
       </Card>

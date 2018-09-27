@@ -10,6 +10,11 @@ import {
   FormText
 } from "reactstrap";
 
+let city =
+  process.env.NODE_ENV === "production"
+    ? "5bab9bc8a888e40004e34f0b"
+    : "5ba405ee48cbed12f8f210dc";
+
 class NewRequest extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +22,7 @@ class NewRequest extends Component {
       title: "",
       text: "",
       endDate: "",
-      _city: "5ba405ee48cbed12f8f210dc",
+      _city: city,
       // _owner: req.user._id,
       // _city: req.city._id,
       message: null,
