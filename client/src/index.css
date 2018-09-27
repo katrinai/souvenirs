@@ -61,6 +61,9 @@ body {
     100vh - 70px
   ); /* 60px for img + 10px for margin top footer */
 }
+.requestCards {
+  display: inline-block;
+}
 footer {
   /* position: fixed; */
   margin-top: 10px;

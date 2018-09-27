@@ -3,7 +3,7 @@ import { Card, CardTitle, CardText, Button } from "reactstrap";
 
 const Request = props => {
   return (
-    <div>
+    <div className="requestCards">
       <Card
         body
         className="text-center"
